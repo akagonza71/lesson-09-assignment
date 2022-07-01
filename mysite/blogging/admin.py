@@ -4,8 +4,10 @@ from django.contrib import admin
 # a new import
 from blogging.models import Post, Category
 
+
 class CategoryInline(admin.StackedInline):
     model = Category.posts.through
+
 
 # and a new admin registration
 class PostAdmin(admin.ModelAdmin):
@@ -13,9 +15,10 @@ class PostAdmin(admin.ModelAdmin):
         CategoryInline,
     ]
 
+
 class CategoryAdmin(admin.ModelAdmin):
-    exclude = ('posts',)
+    exclude = ("posts",)
+
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Category, CategoryAdmin)
-
